@@ -4,18 +4,23 @@ import { useParams } from 'react-router-dom' //숫자 피라미터값을 읽어�
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { useDispatch, useSelector } from 'react-redux';
+import { productAction } from '../redux/actions/productAction';
 
 
 
 const ProductDetail = () => {
+ const product = useSelector((state)=>state.product.selectedItem)
+  const dispatch = useDispatch();
     let {id} = useParams();
-    let [product,setProduct]=useState(null)
+    // let [product,setProduct]=useState(null)
   const getProductDetail = async()=>{
-    let url = `https://my-json-server.typicode.com/Gyultang/hnm-project/products/${id}`
-    let response = await fetch(url)
-    let data = await response.json()
-    console.log(data);
-    setProduct(data)
+    dispatch(productAction.getProductDetail(id))
+    // let url = `https://my-json-server.typicode.com/Gyultang/hnm-project/products/${id}`
+    // let response = await fetch(url)
+    // let data = await response.json()
+    // console.log(data);
+    // setProduct(data)
   }
   useEffect(()=>{
     getProductDetail();

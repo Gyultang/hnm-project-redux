@@ -134,6 +134,7 @@
   .mobile-menu{
     display: flex;
     justify-content: space-between;
+    padding: 15px 20px;
   }
   
   .side-menu{
@@ -179,7 +180,8 @@
   }
   .login-button{
     margin: 10px 8px;
-    font-size: 14px;
+    font-size: 10px;
+    text-align: center;
   }
   .menu-list{
     display: none;
